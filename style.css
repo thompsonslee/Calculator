@@ -1,0 +1,60 @@
+#container,
+#screen,
+#clear,
+#delete,
+.row {
+    border: 2px solid;
+    border-color: black;
+    border-radius: 6px;
+}
+
+#container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: stretch;
+    flex-direction: column;
+    height: 600px;
+    width: 400px;
+    background-color: lightgrey;
+    padding: 20px;
+    
+}
+#screen{
+    flex-grow: 1.5;
+    background-color: white;
+    margin: 5px;
+    margin-bottom: 20px;
+
+}
+#cleardelete{
+    flex-grow: 1;
+    justify-content: space-between;
+    display: flex;
+    width: auto;
+    margin: 5px
+}
+#clear{
+background-color: lightcoral;
+flex-grow: 1;
+margin-right: 5px;
+}
+#delete{
+background-color: blue;
+flex-grow: 1;
+margin-left: 5px;
+}
+#fourbyfour{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+}
+.column{
+    display: flex;
+    flex-grow: 1;
+}
+.row{
+    display: flex;
+    flex-grow: 1;
+    background-color: white;
+    margin: 5px;
+}

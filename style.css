@@ -54,7 +54,10 @@ margin-left: 5px;
 }
 .row{
     display: flex;
+    width: 0;
     flex-grow: 1;
     background-color: white;
     margin: 5px;
+    justify-content: center;
+    align-items: center;
 }

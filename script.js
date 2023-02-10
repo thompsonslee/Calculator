@@ -45,6 +45,13 @@ function sendToStorage(item){
         case "divide":
             sendToArray(item)
             break
+        case "equals":
+            let arraytostring = storingNumbers.join("")
+            let stringtofloat = parseFloat(arraytostring)
+            storingNumbers = []
+            storingArray.push(stringtofloat)
+            console.log(storingArray)
+            equals()
         default:
             storingNumbers.push(item)
     }
@@ -55,4 +62,52 @@ function sendToArray(item){
     storingNumbers = []
     storingArray.push(stringtofloat)
     storingArray.push(item)
+}
+function equals(){
+    while (storingArray.includes ("divide") === true){
+        addingtogether("divide")
+    }
+    while (storingArray.includes ("multi") === true){
+        addingtogether("multi")
+    }
+    while (storingArray.includes ("addition") || storingArray.includes("subtract") === true){
+        for (let i = 0 ; i < storingArray.length ; i++){
+            if (storingArray[i] === "addition" || storingArray[i] === "subtract"){
+                addingtogether(storingArray[i])
+                break
+            }
+        }
+    }
+  
+    function addingtogether(operation){
+        let whereX = storingArray.indexOf(operation)
+
+        let before = storingArray[whereX-1]
+        let beforeind = storingArray.indexOf(before)
+        storingArray[beforeind] = "removed"
+
+        let after = storingArray[whereX+1]
+        let afterind = storingArray.indexOf(after)
+        storingArray[afterind] = "removed"
+        let together
+        switch(operation){
+            case "multi":
+                together = before * after
+                break
+            case "divide":
+                together = before / after
+                break
+            case "addition":
+                together = before + after
+                break
+            case "subtract":
+                together = before - after
+            break
+        }
+        storingArray[whereX] = together
+
+        storingArray.splice(afterind,1)
+        storingArray.splice(beforeind,1)
+    }
+    console.log(storingArray)
 }

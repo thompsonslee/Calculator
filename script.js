@@ -1,4 +1,5 @@
 const fourbyfour = document.getElementById("fourbyfour")
+const thescreen = document.getElementById("screen")
 const numgen = [7,8,9,"/",4,5,6,"x",1,2,3,"-",".",0,"=","+"]
 const classset = [7,8,9,"divide",4,5,6,"multi",1,2,3,"subtract",".",0,"equals","addition"]
 let numgenindex = 0
@@ -13,13 +14,13 @@ for (let i =0 ; i<4 ; i++){
         let rowdivs = document.createElement("div")
 
         let thenumber = document.createTextNode(numgen[numgenindex])
+        let numberToDisplay = (numgen[numgenindex])
         rowdivs.appendChild(thenumber)
         let datavalue =classset[numgenindex]
 
-        rowdivs.addEventListener("click",
-        e => e.target.classList.add("clicked",classset))
-
-        rowdivs.addEventListener("click", function(){
+        rowdivs.addEventListener("click", function(e){
+            e.target.classList.add("clicked",classset)
+            thescreen.innerHTML += numberToDisplay
             sendToStorage(datavalue)
         })
 
@@ -109,5 +110,10 @@ function equals(){
         storingArray.splice(afterind,1)
         storingArray.splice(beforeind,1)
     }
-    console.log(storingArray)
+    let result = storingArray.toString()
+    storingArray = []
+    thescreen.innerHTML = result
+    let thefloat = parseFloat(result)
+    storingNumbers.push(thefloat)
+    console.log(result)
 }

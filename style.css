@@ -19,11 +19,17 @@
     padding: 20px;
     
 }
-#screen{
+#screencontainer{
+    display: flex;
     flex-grow: 1.5;
-    background-color: white;
     margin: 5px;
     margin-bottom: 20px;
+    height: 0;
+}
+#screen{
+    flex-grow: 1;
+    background-color: white;
+    
 
 }
 #cleardelete{
@@ -37,11 +43,13 @@
 background-color: lightcoral;
 flex-grow: 1;
 margin-right: 5px;
+width: 0;
 }
 #delete{
 background-color: blue;
 flex-grow: 1;
 margin-left: 5px;
+width: 0;
 }
 #fourbyfour{
     display: flex;

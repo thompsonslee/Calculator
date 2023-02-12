@@ -1,5 +1,21 @@
 const fourbyfour = document.getElementById("fourbyfour")
 const thescreen = document.getElementById("screen")
+const clearbutton = document.getElementById("clear")
+const deletebutton = document.getElementById("delete")
+
+clearbutton.innerText = "Clear"
+clearbutton.addEventListener("click",function(){
+    thescreen.innerHTML = ""
+    storingNumbers = []
+    storingArray = []
+})
+deletebutton.innerText = "delete"
+deletebutton.addEventListener("click",function(){
+    if (storingNumbers.length > 0){
+        storingNumbers.pop()
+        thescreen.innerHTML = thescreen.innerHTML.slice(0,-1)
+    }
+})
 const numgen = [7,8,9,"/",4,5,6,"x",1,2,3,"-",".",0,"=","+"]
 const classset = [7,8,9,"divide",4,5,6,"multi",1,2,3,"subtract",".",0,"equals","addition"]
 let numgenindex = 0
@@ -84,11 +100,11 @@ function equals(){
         let whereX = storingArray.indexOf(operation)
 
         let before = storingArray[whereX-1]
-        let beforeind = storingArray.indexOf(before)
+        let beforeind = whereX-1
         storingArray[beforeind] = "removed"
 
         let after = storingArray[whereX+1]
-        let afterind = storingArray.indexOf(after)
+        let afterind = whereX+1
         storingArray[afterind] = "removed"
         let together
         switch(operation){

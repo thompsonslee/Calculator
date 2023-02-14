@@ -17,7 +17,6 @@ deletebutton.addEventListener("click",function(){
     }
 })
 const numgen = [7,8,9,"/",4,5,6,"x",1,2,3,"-",".",0,"=","+"]
-const classset = [7,8,9,"divide",4,5,6,"multi",1,2,3,"subtract",".",0,"equals","addition"]
 let numgenindex = 0
 let storingNumbers =[]
 let storingArray = []
@@ -32,10 +31,10 @@ for (let i =0 ; i<4 ; i++){
         let thenumber = document.createTextNode(numgen[numgenindex])
         let numberToDisplay = (numgen[numgenindex])
         rowdivs.appendChild(thenumber)
-        let datavalue =classset[numgenindex]
+        let datavalue =numgen[numgenindex]
 
         rowdivs.addEventListener("click", function(e){
-            e.target.classList.add("clicked",classset)
+            e.target.classList.add("clicked")
             thescreen.innerHTML += numberToDisplay
             sendToStorage(datavalue)
         })
@@ -50,25 +49,20 @@ for (let i =0 ; i<4 ; i++){
 
 function sendToStorage(item){
     switch (item){
-        case "addition":
+        case "+":
+        case "-":
+        case "x":
+        case "/":
             sendToArray(item)
             break
-        case "subtract":
-            sendToArray(item)
-            break
-        case "multi":
-            sendToArray(item)
-            break
-        case "divide":
-            sendToArray(item)
-            break
-        case "equals":
+        case "=":
             let arraytostring = storingNumbers.join("")
             let stringtofloat = parseFloat(arraytostring)
             storingNumbers = []
             storingArray.push(stringtofloat)
             console.log(storingArray)
             equals()
+            break
         default:
             storingNumbers.push(item)
     }
@@ -81,15 +75,15 @@ function sendToArray(item){
     storingArray.push(item)
 }
 function equals(){
-    while (storingArray.includes ("divide") === true){
-        addingtogether("divide")
+    while (storingArray.includes ("/") === true){
+        addingtogether("/")
     }
-    while (storingArray.includes ("multi") === true){
-        addingtogether("multi")
+    while (storingArray.includes ("x") === true){
+        addingtogether("x")
     }
-    while (storingArray.includes ("addition") || storingArray.includes("subtract") === true){
+    while (storingArray.includes ("+") || storingArray.includes("-") === true){
         for (let i = 0 ; i < storingArray.length ; i++){
-            if (storingArray[i] === "addition" || storingArray[i] === "subtract"){
+            if (storingArray[i] === "+" || storingArray[i] === "-"){
                 addingtogether(storingArray[i])
                 break
             }
@@ -108,16 +102,16 @@ function equals(){
         storingArray[afterind] = "removed"
         let together
         switch(operation){
-            case "multi":
+            case "x":
                 together = before * after
                 break
-            case "divide":
+            case "/":
                 together = before / after
                 break
-            case "addition":
+            case "+":
                 together = before + after
                 break
-            case "subtract":
+            case "-":
                 together = before - after
             break
         }

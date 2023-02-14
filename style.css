@@ -1,5 +1,5 @@
 #container,
-#screen,
+#screencontainer,
 #clear,
 #delete,
 .row {
@@ -21,10 +21,15 @@
 }
 #screencontainer{
     display: flex;
+    flex-direction: column;
     flex-grow: 1.5;
     margin: 5px;
     margin-bottom: 20px;
     height: 0;
+}
+#topscreen{
+    flex-grow: 1;
+    background-color: white;
 }
 #screen{
     flex-grow: 1;

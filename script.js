@@ -1,5 +1,6 @@
 const fourbyfour = document.getElementById("fourbyfour")
 const thescreen = document.getElementById("screen")
+const thetopscreen = document.getElementById("topscreen")
 const clearbutton = document.getElementById("clear")
 const deletebutton = document.getElementById("delete")
 
@@ -29,13 +30,11 @@ for (let i =0 ; i<4 ; i++){
         let rowdivs = document.createElement("div")
 
         let thenumber = document.createTextNode(numgen[numgenindex])
-        let numberToDisplay = (numgen[numgenindex])
         rowdivs.appendChild(thenumber)
         let datavalue =numgen[numgenindex]
 
         rowdivs.addEventListener("click", function(e){
             e.target.classList.add("clicked")
-            thescreen.innerHTML += numberToDisplay
             sendToStorage(datavalue)
         })
 
@@ -61,18 +60,22 @@ function sendToStorage(item){
             storingNumbers = []
             storingArray.push(stringtofloat)
             console.log(storingArray)
+            thetopscreen.innerHTML = storingArray.join(" ")
             equals()
             break
         default:
             storingNumbers.push(item)
+            thescreen.innerHTML += item
     }
 }
 function sendToArray(item){
     let arraytostring = storingNumbers.join("")
     let stringtofloat = parseFloat(arraytostring)
     storingNumbers = []
+    thescreen.innerHTML = ""
     storingArray.push(stringtofloat)
     storingArray.push(item)
+    thetopscreen.innerHTML = storingArray.join(" ")
 }
 function equals(){
     while (storingArray.includes ("/") === true){

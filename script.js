@@ -6,6 +6,7 @@ const deletebutton = document.getElementById("delete")
 
 clearbutton.innerText = "Clear"
 clearbutton.addEventListener("click",function(){
+    thetopscreen.innerHTML = ""
     thescreen.innerHTML = ""
     storingNumbers = []
     storingArray = []
@@ -34,7 +35,6 @@ for (let i =0 ; i<4 ; i++){
         let datavalue =numgen[numgenindex]
 
         rowdivs.addEventListener("click", function(e){
-            e.target.classList.add("clicked")
             sendToStorage(datavalue)
         })
 

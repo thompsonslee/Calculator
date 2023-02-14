@@ -15,46 +15,80 @@
     flex-direction: column;
     height: 600px;
     width: 400px;
-    background-color: lightgrey;
+    background-color: darkgray;
     padding: 20px;
+    border-radius: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
     
 }
 #screencontainer{
     display: flex;
     flex-direction: column;
     flex-grow: 1.5;
+    padding-right: 20px;
     margin: 5px;
     margin-bottom: 20px;
     height: 0;
-}
-#topscreen{
-    flex-grow: 1;
     background-color: white;
 }
-#screen{
+#topscreencontainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 0;
+    flex-grow: 1;
+    font-size: 20px;
+    background-color: white;
+}
+#bottomscreencontainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 0;
     flex-grow: 1;
     background-color: white;
+    font-size: 40px
     
 
 }
 #cleardelete{
-    flex-grow: 1;
+    flex-grow: 0.5;
     justify-content: space-between;
     display: flex;
     width: auto;
-    margin: 5px
+    margin: 5px;
+    font-size: 30px;
 }
 #clear{
-background-color: lightcoral;
-flex-grow: 1;
-margin-right: 5px;
-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 150, 150);
+    flex-grow: 1;
+    margin-right: 5px;
+    width: 0;
+}
+#clear:hover{
+    background-color:  rgb(255, 130, 130);
+}
+#clear:active{
+    background-color:  rgb(255, 110, 110);
 }
 #delete{
-background-color: blue;
-flex-grow: 1;
-margin-left: 5px;
-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(150, 150, 255);
+    flex-grow: 1;
+    margin-left: 5px;
+    width: 0;
+}
+#delete:hover{
+    background-color: rgb(130, 130, 255);
+}
+#delete:active{
+    background-color: rgb(110, 110, 255);
 }
 #fourbyfour{
     display: flex;
@@ -73,4 +107,10 @@ width: 0;
     margin: 5px;
     justify-content: center;
     align-items: center;
+}
+.row:hover{
+    background-color: lightgray;
+}
+.row:active{
+    background-color: rgb(182, 182, 182);
 }

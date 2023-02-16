@@ -48,6 +48,12 @@ for (let i =0 ; i<4 ; i++){
 
 function sendToStorage(item){
     switch (item){
+        case ".":
+            if (storingNumbers.includes(".") === false){
+                storingNumbers.push(item)
+                thescreen.innerHTML += item
+            }
+            break
         case "+":
         case "-":
         case "x":
@@ -55,27 +61,35 @@ function sendToStorage(item){
             sendToArray(item)
             break
         case "=":
-            let arraytostring = storingNumbers.join("")
-            let stringtofloat = parseFloat(arraytostring)
-            storingNumbers = []
-            storingArray.push(stringtofloat)
-            console.log(storingArray)
-            thetopscreen.innerHTML = storingArray.join(" ")
-            equals()
-            break
+            if (storingNumbers.length != 0){
+                let arraytostring = storingNumbers.join("")
+                let stringtofloat = parseFloat(arraytostring)
+                storingNumbers = []
+                storingArray.push(stringtofloat)
+                console.log(storingArray)
+                thetopscreen.innerHTML = storingArray.join(" ")
+                equals()
+            }
+                break
         default:
             storingNumbers.push(item)
             thescreen.innerHTML += item
     }
 }
 function sendToArray(item){
-    let arraytostring = storingNumbers.join("")
-    let stringtofloat = parseFloat(arraytostring)
-    storingNumbers = []
-    thescreen.innerHTML = ""
-    storingArray.push(stringtofloat)
-    storingArray.push(item)
-    thetopscreen.innerHTML = storingArray.join(" ")
+    if (storingNumbers.length === 0){
+        storingArray[storingArray.length - 1] = item  
+        thetopscreen.innerHTML = storingArray.join (" ")
+    }
+    else {
+        let arraytostring = storingNumbers.join("")
+        let stringtofloat = parseFloat(arraytostring)
+        storingNumbers = []
+        thescreen.innerHTML = ""
+        storingArray.push(stringtofloat)
+        storingArray.push(item)
+        thetopscreen.innerHTML = storingArray.join(" ")
+    }
 }
 function equals(){
     while (storingArray.includes ("/") === true){
@@ -126,7 +140,6 @@ function equals(){
     let result = storingArray.toString()
     storingArray = []
     thescreen.innerHTML = result
-    let thefloat = parseFloat(result)
-    storingNumbers.push(thefloat)
+    storingNumbers = (Array.from(result))
     console.log(result)
 }
